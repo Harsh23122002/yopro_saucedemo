@@ -1,12 +1,27 @@
-// playwright.config.js
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
+
 
 export default defineConfig({
-    use: {
-        headless: false, // Set false for debugging
-        screenshot: 'only-on-failure',
-        video: 'retain-on-failure',
-        trace: 'on-first-retry',
+  use: {
+    headless: false, // Set false for debugging (use true for CI)
+    screenshot: 'only-on-failure', // Take screenshots only on failure
+    video: 'retain-on-failure', // Keep video files only on failure
+    trace: 'on-first-retry', // Record traces on first retry attempt
+  },
+ 
+  projects: [
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
     },
-    reporter: [['html', { open: 'never' }]], // Generates an HTML report
+    {
+      name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge' }, // or 'msedge-dev'
+    },
+  ],
+  reporter: [
+    ['@cucumber/cucumber', { 
+      output: './reports/cucumber_report.html', // Output Cucumber JSON report
+    }],
+  ],
 });
