@@ -2,12 +2,27 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
+    projects: [
+        {
+            name: 'Chromium',
+            use: { browserName: 'chromium' },
+        },
+        {
+            name: 'Firefox',
+            use: { browserName: 'firefox' },
+        },
+        {
+            name: 'WebKit',
+            use: { browserName: 'webkit' },
+        }
+    ],
     use: {
         headless: false, // Set false for debugging
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'on-first-retry',
     },
+
     reporter: [
         ['playwright-html', {
             testFolder: 'tests',
