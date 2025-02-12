@@ -8,5 +8,18 @@ export default defineConfig({
         video: 'retain-on-failure',
         trace: 'on-first-retry',
     },
-    reporter: [['html', { open: 'never' }]], // Generates an HTML report
+    reporter: [
+        ['playwright-html', {
+            testFolder: 'tests',
+            title: 'Saucedemo Regression Report',
+            project: 'Regression Testing Suite',
+            release: '1.0.0',
+            testEnvironment: 'Prod',
+            embedAssets: true,
+            embedAttachments: true,
+            outputFolder: 'playwright-html-report',
+            minifyAssets: true,
+            startServer: true,
+        }]
+    ],
 });
