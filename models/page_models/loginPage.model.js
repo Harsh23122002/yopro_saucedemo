@@ -17,7 +17,7 @@ class LoginPage {
         LoginPage.instance = this;
 
     }
-    static getSingletonsInstance() {
+    static getSingletonInstance() {
         if (!LoginPage.instance) {
             throw new Error("No Instance found, use new LoginPage(page) to create a new instance");
 

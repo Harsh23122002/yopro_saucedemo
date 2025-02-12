@@ -4,26 +4,23 @@ class Cart {
         this.totalCostBeforeTax = 0;
     }
 
-    addProduct(product) {
+    addProduct(product, cost) {
         this.products.push(product);
-        this.totalCostBeforeTax += product.cost;
+        this.totalCostBeforeTax += cost;
     }
 
-    removeProduct(product) {
+    removeProduct(product, cost) {
         this.products = this.products.filter(p => p.name !== product.name);
-        this.totalCostBeforeTax -= product.cost;
+        this.totalCostBeforeTax -= cost;
     }
 
-    checkout() {
-
-    }
 }
 
-class Product {
-    constructor(name, cost) {
-        this.name = name;
-        this.cost = cost;
-    }
-}
+// class Product {
+//     constructor(name, cost) {
+//         this.name = name;
+//         this.cost = cost;
+//     }
+// }
 
 export default Cart;
